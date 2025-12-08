@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GsdShifts-2x2</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>GsdShifts-2X2</h1>
+    <div class="toolbar" id="controls-top">
+      <div class="small">Mês</div>
+      <button class="btn" id="prev-month">‹</button>
+      <button class="btn" id="next-month">›</button>
+      <div style="padding:0 8px;display:flex;align-items:center;gap:8px">
+        <select id="month-select" aria-label="Selecionar mês"></select>
+        <select id="year-select" aria-label="Selecionar ano"></select>
+      </div>
+      <button id="toggle-view" class="btn btn-ghost ghost">Ver: Compacto</button>
+      <button id="add-emp" class="btn">➕ Novo</button>
+      <button id="export-csv" class="btn btn-ghost ghost">Exportar CSV/Excel</button>
+      <button id="export-pdf" class="btn btn-ghost ghost">📄 Exportar PDF</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="panel" aria-labelledby="funcionarios-title">
+      <h2 id="funcionarios-title">Funcionários</h2>
+      <div class="search">
+        <input id="search" placeholder="Pesquisar funcionário..." aria-label="Pesquisar funcionário" />
+        <button id="clear-search" class="btn ghost">Limpar</button>
+      </div>
+      <div class="emp-list" id="emp-list" role="list"></div>
+      <hr />
+      <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div class="small">Cada funcionário: modo <strong>2x2</strong> (rotativo) ou <strong>Fixo</strong>.</div>
+        <button id="manage-holidays" class="btn ghost">Feriados</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="panel" aria-labelledby="month-title-section">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap">
+          <div>
+            <div class="month-title" id="month-title">—</div>
+            <div class="small" id="month-sub">Visão compacta: linha por funcionário</div>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <div><span class="box work"></span> Trabalha</div>
+            <div><span class="box off"></span> Folga</div>
+            <div><span class="box holiday"></span> Feriado</div>
+          </div>
+        </div>
+        <div class="compact-wrap" id="compact-wrap" aria-live="polite">
+          <!-- tabela injetada pelo JS -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal: add/edit employee -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="card">
+      <h3 id="modal-title">Novo funcionário</h3>
+      <label for="emp-name">Nome</label>
+      <input type="text" id="emp-name" />
+      <div class="row">
+        <div style="flex:1">
+          <label for="emp-type">Tipo Turno</label>
+          <select id="emp-type">
+            <option value="1-2x2">1º 2x2 — 06:00–17:00</option>
+            <option value="2-2x2">2º 2x2 — 14:20–00:58</option>
+            <option value="3-2x2">3º 2x2 — 20:20–06:00</option>
+            <option value="1-fixo">1º fixo — 06:45–16:00</option>
+            <option value="2-fixo">2º fixo — 16:00–00:58</option>
+            <option value="3-fixo">3º fixo — 23:20–08:00</option>
+          </select>
+        </div>
+        <div style="flex:1">
+          <label for="emp-custom-time">Horário personalizado (opcional)</label>
+          <input type="text" id="emp-custom-time" placeholder="Ex: 06:00–17:00" />
+        </div>
+      </div>
+      <label for="emp-start">Data de início (para padrão 2x2)</label>
+      <input type="date" id="emp-start" />
+      <label>Dias semanais de folga (modo fixo)</label>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">
+        <label><input type="checkbox" class="dow" value="0" /> Dom</label>
+        <label><input type="checkbox" class="dow" value="1" /> Seg</label>
+        <label><input type="checkbox" class="dow" value="2" /> Ter</label>
+        <label><input type="checkbox" class="dow" value="3" /> Qua</label>
+        <label><input type="checkbox" class="dow" value="4" /> Qui</label>
+        <label><input type="checkbox" class="dow" value="5" /> Sex</label>
+        <label><input type="checkbox" class="dow" value="6" /> Sab</label>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button id="save-emp" class="btn">Salvar</button>
+        <button id="cancel-emp" class="btn ghost">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: holidays -->
+  <div class="modal" id="modal-hol" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="card">
+      <h3>Feriados (editar)</h3>
+      <label for="hol-date">Data</label>
+      <input type="date" id="hol-date" />
+      <label for="hol-name">Nome</label>
+      <input type="text" id="hol-name" placeholder="Ex: Independência" />
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+        <button id="add-hol" class="btn">Adicionar</button>
+        <button id="close-hol" class="btn ghost">Fechar</button>
+      </div>
+      <div class="holiday-list" id="holiday-list"></div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

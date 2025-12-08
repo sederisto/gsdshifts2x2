@@ -1,0 +1,87 @@
+/* style.css - gsdshifts-2x2 (separado) */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#6b7280;
+  --accent-blue:#1e90ff;
+  --work-blue:#cfe8ff;
+  --off-green:#d7f3d0;
+  --danger:#ff6b6b;
+  --glass: rgba(2,6,23,0.03);
+  --holiday:#ff9b34;
+}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:#f5f7fb;color:#0b1720}
+header{background:linear-gradient(90deg,#0b1b2b,#0b2740);color:white;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{font-size:18px;margin:0}
+.toolbar{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--accent-blue);color:white;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--muted)}
+.container{display:grid;grid-template-columns:340px 1fr;gap:16px;padding:16px}
+.panel{background:white;border-radius:10px;padding:12px;box-shadow:0 6px 20px rgba(2,6,23,0.05);margin-bottom:16px}
+.panel h2{margin:0 0 8px 0;font-size:16px}
+.emp-list{max-height:52vh;overflow:auto}
+.emp-item{display:flex;justify-content:space-between;padding:8px;border-radius:6px;align-items:center}
+.emp-item:nth-child(odd){background:var(--glass)}
+.small{font-size:13px;color:var(--muted)}
+.search{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.search input{flex:1;padding:8px;border-radius:8px;border:1px solid #ddd}
+.main{display:flex;flex-direction:column;gap:12px}
+.controls{display:flex;gap:8px;align-items:center}
+.month-title{font-weight:600}
+.compact-wrap{overflow:auto;background:white;border-radius:10px;padding:8px}
+table.compact{border-collapse:collapse;width:100%;min-width:1000px}
+table.compact th, table.compact td{border:1px solid rgba(0,0,0,0.06);padding:6px;text-align:center;font-size:12px}
+table.compact th.sticky, table.compact td.sticky{position:sticky;left:0;background:white;z-index:3;text-align:left;padding-left:10px;width:240px}
+.cell-work{background:var(--work-blue)}
+.cell-off{background:var(--off-green)}
+.cell-holiday{background:linear-gradient(90deg,var(--holiday),#ffd8b0)}
+.cell-holiday .shift{font-weight:700}
+.cell-work .shift{display:block;font-size:11px;font-weight:600}
+.legend{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.legend .box{width:18px;height:12px;border-radius:3px}
+.box.work{background:var(--work-blue)}
+.box.off{background:var(--off-green)}
+.box.holiday{background:linear-gradient(90deg,var(--holiday),#ffd8b0)}
+.modal{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;z-index:999;}
+.modal.open{display:flex}
+.modal .card{width:90vw;max-width:460px;background:white;padding:14px;border-radius:10px}
+label{display:block;font-size:13px;margin-top:8px}
+input[type=text],select,input[type=date],input[type=time]{width:100%;padding:8px;border-radius:6px;border:1px solid #ddd}
+.row{display:flex;gap:8px}
+.chip{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);font-size:12px}
+.holiday-list{max-height:16vh;overflow:auto;margin-top:8px}
+/* print styles */
+@media print{
+  header,.toolbar,.btn,#controls-top,.search{display:none}
+  body{background:white}
+}
+/* Tablet */
+@media (max-width:1000px){
+  .container{grid-template-columns:1fr;}
+  table.compact{min-width:900px}
+  .panel{max-width:100vw;}
+}
+/* Celular */
+@media (max-width:700px){
+  .container{grid-template-columns:1fr;padding:4px;}
+  .panel{padding:5vw 2vw; margin-bottom:8px;}
+  .toolbar{flex-direction:column;gap:4px;}
+  .main{gap:4px;}
+  .legend{flex-direction:column;align-items:flex-start;}
+  .compact-wrap{padding: 2px;}
+  table.compact{min-width:650px;font-size:11px;}
+  table.compact th.sticky, table.compact td.sticky{width:120px;padding-left:2px;}
+  .modal .card{width:98vw;min-width:0;}
+}
+@media (max-width:400px){
+  table.compact{min-width:270px;}
+  .panel h2{font-size:14px;}
+}
+/* pequenas melhorias de acessibilidade */
+button:focus, select:focus, input:focus { outline: 3px solid rgba(30,144,255,0.15); outline-offset:2px; }
+
+@media print {
+  #compact-wrap {
+    zoom: 1.0 !important;
+  }
+}
