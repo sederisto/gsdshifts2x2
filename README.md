@@ -4,7 +4,15 @@
 <p>Projeto final do curso Ciência da Computação – Harvard / CC50, desenvolvido com HTML, CSS, JavaScript, Python (Flask) e SQLite</p>
 <p>Trabalho em uma grande companhia da área de eletroeletrônica e automação, e sempre fui um entusiasta por tecnologia. No dia a dia, percebi uma dificuldade frequente entre minha equipe e outros colaboradores: visualizar rapidamente quem está em cada turno, especialmente nas escalas 2x2, além da necessidade de organizar agendamentos de forma automática e confiável.</p>
 <p></p>
+<p>Para resolver esse problema real, desenvolvi um sistema de controle de escala 2x2 - Gsdshifts2x2, uma solução moderna, responsiva e simples que facilita o controle de turnos, tornando o processo mais claro, eficiente e acessível para todos.</p>
 ## Tecnologias
+
+<p>O projeto foi desenvolvido seguindo as boas práticas aprendidas no CC50, com o código organizado da seguinte forma, dentro do diretório project da IDE CS50</p>
+<p>index.html – estrutura da interface</p>
+<p>style.css – design e layout</p>
+<p>script.js – lógica e interações</p>
+<p>Flask (Python) – rotas, APIs e backend</p>
+<p>SQLite – armazenamento das escalas e agendamentos</p>
 <div>
   <img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
   <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
