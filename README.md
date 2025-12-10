@@ -1,8 +1,9 @@
 <h1>Portifolio</h1>
 
 <h2>Sobre</h2>
-<p>Portifolio-Ciencia da Computação de Harvard</p>
-
+<p>Projeto final do curso Ciência da Computação – Harvard / CC50, desenvolvido com HTML, CSS, JavaScript, Python (Flask) e SQLite</p>
+<p>Trabalho em uma grande companhia da área de eletroeletrônica e automação, e sempre fui um entusiasta por tecnologia. No dia a dia, percebi uma dificuldade frequente entre minha equipe e outros colaboradores: visualizar rapidamente quem está em cada turno, especialmente nas escalas 2x2, além da necessidade de organizar agendamentos de forma automática e confiável.</p>
+<p></p>
 ## Tecnologias
 <div>
   <img src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
